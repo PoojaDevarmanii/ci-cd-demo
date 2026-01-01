@@ -3,6 +3,7 @@ name: CI-CD Pipeline (Staging)
 on:
   push:
     branches:
+      
       main
 
 jobs:
@@ -26,7 +27,7 @@ jobs:
         run: docker build -t poojadevarmanii/backend:staging ./backend
 
         name: Run backend tests
-        run: docker run poojadevarmanii/backend:staging pytest
+        run: docker run poojadevarmanii/backend:staging pytest --cache-clear --disable-warnings
 
         name: Trivy scan backend
         uses: aquasecurity/trivy-action@master
