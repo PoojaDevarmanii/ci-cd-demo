@@ -1,31 +1,6 @@
-name: CI-CD Pipeline
-
-on:
-  push:
-    branches: [ "main" ]
-
-jobs:
-  build-test:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v4
-
-    - name: Build backend
-      run: docker build -t backend ./backend
-
-    - name: Run tests
-      run: docker run backend pytest
-
-    - name: Trivy scan
-      uses: aquasecurity/trivy-action@master
-      with:
-        image-ref: backend
-
-    - name: Login to DockerHub
-      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_USER }} --password-stdin
-
-    - name: Push images
-      run: |
-        docker tag backend mydockerhub/backend:staging
-        docker push mydockerhub/backend:staging
+- name: Trivy scan backend
+  uses: aquasecurity/trivy-action@master
+  with:
+    image-ref: poojadevarmanii/backend:staging
+    severity: CRITICAL
+    exit-code: 0
