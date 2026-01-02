@@ -27,7 +27,7 @@ jobs:
         run: docker build -t poojadevarmanii/backend:staging ./backend
 
         name: Run backend tests
-        run: docker run poojadevarmanii/backend:staging pytest || true
+        run: docker run --rm poojadevarmanii/backend:staging pytest || true
         name: Trivy scan backend
         uses: aquasecurity/trivy-action@master
         with:
