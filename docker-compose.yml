@@ -1,17 +1,19 @@
+version: "3.8"
+
 services:
   backend:
     image: poojadevarmanii/backend:staging
     ports:
-       "5000:5000"
+      - "5000:5000"
     environment:
-       ENV=staging
+      ENV: staging
     depends_on:
-       db
+      - db
 
   frontend:
     image: poojadevarmanii/frontend:staging
     ports:
-       "8081:80"
+      - "8081:80"
 
   db:
     image: postgres:15
@@ -20,7 +22,7 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: appdb
     volumes:
-       pgdata:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
 
 volumes:
   pgdata:
