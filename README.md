@@ -49,8 +49,6 @@ Copy code
 - Testing: Pytest
 - Version Control: Git and GitHub
 
----
-
 ## Project Structure
 
 ci-cd-demo/
@@ -74,16 +72,12 @@ ci-cd-demo/
 yaml
 Copy code
 
----
-
 ## Docker Best Practices Implemented
 
 - Multi-stage builds to reduce Docker image size
 - Non-root user execution for improved security
 - Optimized layer caching
 - Environment variable-based configuration
-
----
 
 ## Running the Application Locally
 
@@ -94,7 +88,7 @@ Copy code
 ### Steps
 
 ```bash
-git clone https://github.com/<your-username>/ci-cd-demo.git
+git clone https://github.com/<poojadevarmnaii>/ci-cd-demo.git
 cd ci-cd-demo
 docker compose up --build
 The application will be available at:
